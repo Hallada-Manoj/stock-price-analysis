@@ -1,19 +1,23 @@
-# Stock Price Analysis and Forecasting
+# Stock Price Analysis and Forecasting using ARIMA
 
 ## Project Overview
 
-This project explores historical stock market data using Python, focusing on Apple Inc. (AAPL). It includes exploratory data analysis, financial data visualization, outlier detection, and time-series forecasting using the ARIMA model.
+This project explores historical stock market data using Python, with a focus on Apple Inc. (AAPL). It involves data inspection, cleaning, exploratory data analysis, financial data visualization, outlier detection, and time-series forecasting using the ARIMA model.
+
+The objective is to understand historical stock price movements and evaluate the performance of different forecasting approaches.
 
 ## Dataset
 
 - **Dataset:** S&P 500 Stock Data
-- **File:** `all_stocks_5yr.csv`
+- **File Name:** `all_stocks_5yr.csv`
 - **Source:** [Kaggle – S&P 500 Stock Data](https://www.kaggle.com/datasets/camnugent/sandp500)
-- **Description:** Historical stock data for S&P 500 companies, including daily opening, highest, lowest, and closing prices, trading volume, and ticker symbols.
+- **Description:** Historical stock market data containing daily opening, highest, lowest, and closing prices, trading volume, and stock ticker symbols.
 
-Download the dataset from Kaggle and place `all_stocks_5yr.csv` in the project folder before running the notebook.
+The dataset contains historical records for multiple S&P 500 companies. This project specifically focuses on Apple Inc. (AAPL).
 
-## Technologies Used
+**Note:** Download the dataset from Kaggle and place `all_stocks_5yr.csv` in the same directory as the Jupyter Notebook before running the project.
+
+## Technologies and Libraries
 
 - Python
 - Pandas
@@ -26,30 +30,105 @@ Download the dataset from Kaggle and place `all_stocks_5yr.csv` in the project f
 
 ## Project Workflow
 
-1. Data loading and initial inspection
-2. Data cleaning and handling missing values
-3. Date conversion and chronological sorting
-4. Exploratory data analysis
-5. AAPL closing-price visualization
-6. Candlestick chart visualization
-7. Moving-average analysis (20-day and 50-day)
-8. Monthly average closing-price analysis
-9. Outlier detection using the IQR method
-10. Time-series forecasting using ARIMA(5, 1, 0)
-11. Model evaluation using MAE, MSE, RMSE, and MAPE
-12. Actual versus predicted stock-price comparison
+### 1. Data Inspection and Cleaning
+- Loaded and explored the stock market dataset.
+- Examined data types, dimensions, and statistical summaries.
+- Checked missing values and duplicate records.
+- Converted the date column into datetime format.
+- Removed records with missing OHLC (Open, High, Low, Close) values.
+- Sorted records chronologically.
 
-## Forecasting
+### 2. Exploratory Data Analysis
+- Analyzed AAPL closing prices over time.
+- Examined long-term stock price trends.
+- Calculated 20-day and 50-day moving averages.
+- Analyzed average closing prices by month.
 
-The notebook focuses on AAPL closing prices and uses a chronological 80:20 train-test split. An ARIMA(5, 1, 0) model is fitted to the training data. Forecasts are compared with actual test values and evaluated using regression error metrics.
+### 3. Data Visualization
+- Historical closing-price line chart.
+- Interactive candlestick chart.
+- Moving-average visualization.
+- Long-term rolling-average trend.
+- Monthly average closing-price bar chart.
+- Box plot showing price distribution and outliers.
 
-The notebook also explores one-step-ahead predictions.
+### 4. Outlier Detection
+- Applied the Interquartile Range (IQR) method.
+- Calculated Q1, median, Q3, and IQR.
+- Identified potential outliers in AAPL closing prices.
+- Visualized the distribution using a box plot.
 
-## Repository Contents
+### 5. Stock Price Forecasting using ARIMA
 
-- `stock_price_analysis.ipynb` – Analysis and forecasting notebook
-- `README.md` – Project documentation
-- `requirements.txt` – Required Python libraries
+The forecasting analysis focuses on AAPL closing prices.
+
+- Created a chronological 80:20 training and testing split.
+- Used an ARIMA(5, 1, 0) model.
+- Generated forecasts for the testing period.
+- Compared actual and predicted stock prices.
+
+Two forecasting approaches were explored:
+
+**Multi-Step Forecasting**
+- The model is fitted using the training dataset.
+- Generates predictions for the complete testing period without incorporating actual test observations during forecasting.
+
+**Rolling One-Step-Ahead Forecasting**
+- Predicts one observation at a time.
+- Incorporates the actual observation into the model before predicting the next observation.
+- Evaluates how predictions perform when updated with newly available actual data.
+
+### 6. Model Evaluation
+
+Both forecasting approaches were evaluated using:
+
+- Mean Absolute Error (MAE)
+- Mean Squared Error (MSE)
+- Root Mean Squared Error (RMSE)
+- Mean Absolute Percentage Error (MAPE)
+
+Actual and predicted stock prices were also visualized to compare forecasting performance.
+
+## How to Run the Project
+
+1. Clone or download this repository.
+2. Download `all_stocks_5yr.csv` from the Kaggle dataset link.
+3. Place the CSV file in the same folder as the notebook.
+4. Install the required libraries:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. Launch Jupyter Notebook:
+
+   ```bash
+   jupyter notebook
+   ```
+
+6. Open `stock_price_analysis.ipynb`.
+7. Run the notebook cells sequentially.
+
+## Repository Structure
+
+```text
+stock-price-analysis/
+│
+├── README.md
+├── requirements.txt
+└── stock_price_analysis.ipynb
+```
+
+## Key Learning Outcomes
+
+- Data cleaning and preprocessing using Pandas.
+- Exploratory data analysis of financial datasets.
+- Financial data visualization using Matplotlib and Plotly.
+- Moving-average analysis.
+- Statistical outlier detection using IQR.
+- Time-series modeling using ARIMA.
+- Multi-step and rolling one-step-ahead forecasting.
+- Model evaluation using regression error metrics.
 
 ## Author
 
